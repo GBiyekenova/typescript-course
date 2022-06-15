@@ -49,6 +49,7 @@ console.log(it);
 
 class AccountingDepartment extends Department {
   private lastReport: string;
+  private static instance: AccountingDepartment;
 
   get mostRecentReport() {
     //getter method has to return somethig.
@@ -66,9 +67,17 @@ class AccountingDepartment extends Department {
 
 
   }
-  constructor(id: string, private reports: string[]) {
+  private constructor(id: string, private reports: string[]) {
     super(id, "Accounting"); //super must be declared before any 'this' key
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if (this.instance) {
+      return this.instance;
+    }
+    this.instance = new AccountingDepartment('d2', []);
+    return this.instance;
   }
 
   describe() {
@@ -91,7 +100,8 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
-const accounting = new AccountingDepartment("d2", []);
+// const accounting = new AccountingDepartment("d2", []);
+const accounting = AccountingDepartment.getInstance(); //because it's a singleton pattern (created with private key and private constructor, it can be instantiated only once. If we create another variable, the containing info will be the same.)
 accounting.mostRecentReport = 'Year end report.'; //access the setter as a property
 accounting.addReport("Something went wrong");
 console.log(accounting.mostRecentReport);//getter is not executed as a functions call.
