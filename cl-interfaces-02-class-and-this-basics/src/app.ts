@@ -15,4 +15,4 @@ user1 = {
     console.log(phrase + " " + this.name);
   },
 };
-user1.greet('Hi there - My name is')
+user1.greet("Hi there - My name isinterface basics");
