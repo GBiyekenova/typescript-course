@@ -75,7 +75,7 @@ useVehicle(v1);
 useVehicle(v2);
 
 interface Bird {
-  type: "bird";
+  type: "bird"; //type guards
   flyingSpeed: number;
 }
 
@@ -86,6 +86,7 @@ interface Horse {
 
 type Animal = Horse | Bird;
 
+//Discriminated Unions
 function moveAnimal(animal: Animal) {
   let speed;
   switch (animal.type) {
@@ -101,10 +102,24 @@ function moveAnimal(animal: Animal) {
 
 moveAnimal({ type: "bird", flyingSpeed: 10 });
 
-const userInputElement = document.getElementById("user-input") as HTMLInputElement;
+//Type Casting
+const userInputElement = document.getElementById(
+  "user-input"
+) as HTMLInputElement;
 
 //or --->In the following case js has jsx syntax that is similar to <>.
 // const userInputElement = <HTMLInputElement> document.getElementById("user-input");
 
-
 userInputElement.value = "Hi There!";
+
+
+//Index Properties
+interface ErrorContainer {
+  //{ email: "Not a valid email!", username: "Must start with a capital character!" }
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not a valid emai!",
+  username: "Must start with a capital character!",
+};
