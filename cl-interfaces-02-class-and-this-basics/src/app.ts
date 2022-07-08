@@ -96,7 +96,15 @@ function moveAnimal(animal: Animal) {
       speed = animal.runningSpeed;
       break;
   }
-  console.log('Moving at speed: ' + speed)
+  console.log("Moving at speed: " + speed);
 }
 
-moveAnimal({type: 'bird', flyingSpeed: 10})
+moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+const userInputElement = document.getElementById("user-input") as HTMLInputElement;
+
+//or --->In the following case js has jsx syntax that is similar to <>.
+// const userInputElement = <HTMLInputElement> document.getElementById("user-input");
+
+
+userInputElement.value = "Hi There!";
