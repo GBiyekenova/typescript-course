@@ -38,6 +38,14 @@ function add1(a: Combinable, b: Combinable) {
 const result = add1("Shawn", " Max");
 result.split(' ');
 
+const fetchedUserData = {
+  id: "u1",
+  name: "Shawn",
+  job: { title: "CEO", description: "My own company" }
+}
+//optional chaining (?) after an object or an object property checks if it exists => then proceeds, or else doesn't execute.
+console.log(fetchedUserData?.job?.title)
+
 type UnknownEmployee = Admin | Employee;
 
 function printEmployeeInformation(emp: UnknownEmployee) {
